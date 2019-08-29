@@ -5,7 +5,7 @@
     height="300"
   >
     <v-card-title>
-      <span :style="style">Hello World</span>
+      <span :style="style">{{message}}</span>
     </v-card-title>
   </v-card>
 
@@ -16,6 +16,7 @@ export default {
   name: 'ColorText',
   props: {
     color: String,
+    message: String,
   },
   computed: {
     style () {

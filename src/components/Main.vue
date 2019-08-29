@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row align="center">
-      <v-col class="d-flex" cols="12" sm="6">
+      <v-col class="d-flex" cols="12" sm="2">
         <v-select
           :items="visComponentNames"
           label="Visualization"
@@ -12,10 +12,26 @@
     </v-row>
 
     <v-row>
-      <v-col class="d-flex" cols="12" sm="6">
+      <v-col class="d-flex" cols="12" sm="3">
         <color-text v-if="mode == 'ColorText'"
-          color="red"
+          :color="color"
+          :message="message"
         />
+      </v-col>
+
+      <v-col class="d-flex" cols="12" sm="3">
+        <div v-if="mode == 'ColorText'">
+          <v-color-picker
+            v-model="color"
+            hide-inputs
+          />
+
+          <v-text-field
+            v-model="message"
+            outlined
+          />
+
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -33,6 +49,8 @@ export default {
     return {
       visComponents: vis,
       mode: null,
+      color: '',
+      message: 'Hello World',
     };
   },
 
